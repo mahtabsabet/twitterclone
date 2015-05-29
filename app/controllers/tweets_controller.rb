@@ -10,7 +10,10 @@ class TweetsController < ApplicationController
     else
       @tweets = Tweet.all
     end
+  end
 
+  def index_all
+    @tweets = Tweet.all
   end
 
   # GET /tweets/1

@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Listing Tweets</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <div class="well">
+          <%= link_to tweet.content, tweet %>
+          <p>
+            <%= tweet.created_at %>
+          </p>
+        </div>
+               
+        <%= link_to edit_tweet_path(tweet), class: 'btn btn-primary' do %>
+          <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit this tweet"></i> Edit
+        <% end %>
+
+        <%= link_to tweet, class: 'btn btn-primary' do%> <!-- method: :delete, data: { confirm: 'Are you sure?' } -->
+          <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="bottom" title="Delete this tweet"></i>  Delete
+        <% end %>
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Tweet', new_tweet_path %>
+</div>
+
