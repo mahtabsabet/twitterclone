@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
-  get 'user/profile'
+
 
   devise_for :users
   get 'welcome/index'
-  get 'tweets/index_all' => 'tweets#index_all'
-  get 'user/:handle' => 'user#profile'
+  #get 'profile', to: 'user#show'
+  #get 'profile' => 'user#show'
+  get 'profile/:id' => 'user#show', as: :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

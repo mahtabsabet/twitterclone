@@ -1,6 +1,3 @@
-<div class="container">
-  <h1>Listing Tweets</h1>
-
   <table>
     <thead>
       <tr>
@@ -11,9 +8,20 @@
     <tbody>
       <% @tweets.each do |tweet| %>
         <div class="well">
-          <%= link_to tweet.content, tweet %>
+          <h6>
+            <% if User.exists?(tweet.user_id) %>
+              <%= link_to tweet.user.email, profile_path(tweet.user) %>
+            <% else %>
+              Unknown user 
+            <% end %>
+
+            wrote:
+          </h6>
           <p>
-            <%= tweet.created_at %>
+            <h4><%= link_to tweet.content, tweet %></h4>
+          </p>
+          <p>
+            <h6><small>Posted on: <%= tweet.created_at %></small></h6>
           </p>
         </div>
                
@@ -21,7 +29,7 @@
           <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit this tweet"></i> Edit
         <% end %>
 
-        <%= link_to tweet, class: 'btn btn-primary' do%> <!-- method: :delete, data: { confirm: 'Are you sure?' } -->
+        <%= link_to tweet, {:method => :delete, :class => 'btn btn-primary'} do%> 
           <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="bottom" title="Delete this tweet"></i>  Delete
         <% end %>
 
@@ -32,5 +40,5 @@
   <br>
 
   <%= link_to 'New Tweet', new_tweet_path %>
-</div>
+
 
