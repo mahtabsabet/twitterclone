@@ -5,12 +5,7 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def index
-    if user_signed_in?
-      @tweets = current_user.tweets
-    else
-      @tweets = Tweet.all
-    end
-
+    @tweets = Tweet.all
   end
 
   # GET /tweets/1

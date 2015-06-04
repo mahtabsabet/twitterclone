@@ -1,0 +1,44 @@
+  <table>
+    <thead>
+      <tr>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @tweets.each do |tweet| %>
+        <div class="well">
+          <h6>
+            <% if User.exists?(tweet.user_id) %>
+              <%= link_to tweet.user.handle, profile_path(tweet.user) %>
+            <% else %>
+              Unknown user 
+            <% end %>
+
+            wrote:
+          </h6>
+          <p>
+            <h4><%= link_to tweet.content, tweet %></h4>
+          </p>
+          <p>
+            <h6><small>Posted on: <%= tweet.created_at %></small></h6>
+          </p>
+        </div>
+               
+        <%= link_to edit_tweet_path(tweet), class: 'btn btn-primary' do %>
+          <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit this tweet"></i> Edit
+        <% end %>
+
+        <%= link_to tweet, {:method => :delete, :class => 'btn btn-primary'} do%> 
+          <i class="fa fa-trash-o" data-toggle="tooltip" data-placement="bottom" title="Delete this tweet"></i>  Delete
+        <% end %>
+
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'New Tweet', new_tweet_path %>
+
+

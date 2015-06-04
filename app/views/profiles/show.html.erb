@@ -1,0 +1,14 @@
+<div class="container">
+  <%= image_tag @user.avatar.url(:thumb) %>
+  <h1><%= @user.handle%>'s Profile
+    <small>Email: <%= @user.email %>
+  </h1>
+  <%if @can_edit %>
+    <%= link_to edit_profile_path(@user), class: 'btn btn-primary' do %>
+      <i class="fa fa-pencil" data-toggle="tooltip" data-placement="bottom" title="Edit Profile"></i> Edit Profile
+    <% end %>
+  <% end %>
+  <h4>Listing all of <%= @user.handle%>'s tweets:</h4>
+  <%= render 'tweets/index' %>
+
+</div>

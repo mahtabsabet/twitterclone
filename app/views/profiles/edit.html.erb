@@ -1,0 +1,26 @@
+<div class="user-auth-box-outer">
+  <div class="user-auth-box">
+    <h1>Edit Profile</h1>
+
+    <%= form_for @user, :url => profile_path, :html => { :multipart => true, :method => 'PATCH' } do |form| %>
+
+      <div class="field">
+        <%= form.label :handle %><br />
+        <%= form.text_field :handle, autofocus: true %>
+      </div>
+
+      <br/>
+
+      <div class="field">
+        <%= form.label :avatar %><br />
+        <%= form.file_field :avatar %>
+      </div>
+
+
+      <div class="actions">
+        <%= form.submit "Update" %>
+      </div>
+
+    <% end %>
+  </div>
+</div>
