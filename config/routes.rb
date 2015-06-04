@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
 
 
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
   get 'welcome/index'
-  #get 'profile', to: 'user#show'
-  #get 'profile' => 'user#show'
-  get 'profile/:id' => 'user#show', as: :profile
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -21,6 +18,7 @@ Rails.application.routes.draw do
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   resources :tweets
+  resources :profiles
 
   # Example resource route with options:
   #   resources :products do

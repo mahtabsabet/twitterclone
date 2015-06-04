@@ -10,7 +10,7 @@
         <div class="well">
           <h6>
             <% if User.exists?(tweet.user_id) %>
-              <%= link_to tweet.user.email, profile_path(tweet.user) %>
+              <%= link_to tweet.user.handle, profile_path(tweet.user) %>
             <% else %>
               Unknown user 
             <% end %>
